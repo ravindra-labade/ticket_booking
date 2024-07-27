@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Show</title>
+{% endblock %}
+{% block content %}
+
+            <table class="table table-success table-striped">
+                <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Ticket_no</th>
+                            <th>From_place</th>
+                            <th>Destination</th>
+                            <th>Travelling_date</th>
+                            <th>Bus_type</th>
+                            <th>Amount</th>
+                            <th colspan="2" class="text-center">Action</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    {% for ticket in tickets %}
+                        <tr>
+                            <td>{{ ticket.id }}</td>
+                            <td>{{ ticket.ticket_no }}</td>
+                            <td>{{ ticket.from_place }}</td>
+                            <td>{{ ticket.destination }}</td>
+                            <td>{{ ticket.travelling_date }}</td>
+                            <td>{{ ticket.bus_type }}</td>
+                            <td>{{ ticket.amount }}</td>
+                             <td>
+                                    <a href="{% url 'update_url' ticket.id %}">
+                                        <button class="btn btn-primary"><i class="bi bi-pencil-square"></i>&nbsp Update</button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'cancel_url' ticket.id  %}">
+                                        <button class="btn btn-warning"><i class="bi bi-trash"></i>&nbsp Delete</button>
+                                    </a>
+                                </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+{% endblock %}
